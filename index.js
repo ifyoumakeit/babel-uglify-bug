@@ -12,7 +12,8 @@ const { code: codeBabel } = require("@babel/core").transform(code, {
       {
         targets: {
           browsers: ["ios_saf >= 9"]
-        }
+        },
+        modules: false
       }
     ]
   ]
@@ -41,6 +42,13 @@ const { code: codeUglifyWebpack } = uglify.minify(codeBabel, {
   safari10: false
 });
 
+// Uglify with CLI defaults
+// Ran yarn uglify code.js and threw debugger into script to see defaults.
+const { code: codeUglifyCliDefaults } = uglify.minify(codeBabel, {
+  compress: false,
+  mangle: false
+});
+
 const hasNoFatArrows = str =>
   str.indexOf("=>") === -1 ? "\x1b[32m✔\x1b[0m" : "\x1b[31m✖\x1b[0m";
 
@@ -64,6 +72,10 @@ if (process.argv[2] === "--debug") {
   console.log("####### START UGLIFY WEBPACK CODE #######");
   console.log(codeUglifyWebpack);
   console.log("####### END UGLIFY WEBPACK CODE #######\n\n");
+
+  console.log("####### START UGLIFY CLI DEFAULTS CODE #######");
+  console.log(codeUglifyCliDefaults);
+  console.log("####### END UGLIFY CLI DEFAULTS CODE #######\n\n");
 }
 
 console.log("Are fat arrows stripped?");
@@ -73,6 +85,10 @@ console.log(hasNoFatArrows(codeBabel), "Babel");
 console.log(hasNoFatArrows(codeUglify), "Uglify");
 console.log(hasNoFatArrows(codeUglifyDefaults), "Babel => Uglify w/ Defaults");
 console.log(
-  hasNoFatArrows(codeUglify),
+  hasNoFatArrows(codeUglifyWebpack),
   "Babel => Uglify w/ Webpack Plugin Defaults"
+);
+console.log(
+  hasNoFatArrows(codeUglifyCliDefaults),
+  "Babel => Uglify w/ CLI Defaults"
 );
