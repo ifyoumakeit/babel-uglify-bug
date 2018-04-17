@@ -51,19 +51,19 @@ console.log("####### END CODE #######\n\n");
 if (process.argv[2] === "--debug") {
   console.log("####### START BABEL CODE #######");
   console.log(codeBabel);
-  console.log("\n\n####### END BABEL CODE #######\n\n");
+  console.log("####### END BABEL CODE #######\n\n");
 
   console.log("####### START UGLIFY CODE #######");
   console.log(codeUglify);
-  console.log("\n\n####### END UGLIFY CODE #######\n\n");
+  console.log("####### END UGLIFY CODE #######\n\n");
 
   console.log("####### START UGLIFY DEFAULTS CODE #######");
   console.log(codeUglifyDefaults);
-  console.log("\n\n####### END UGLIFY DEFAULTS CODE #######\n\n");
+  console.log("####### END UGLIFY DEFAULTS CODE #######\n\n");
 
   console.log("####### START UGLIFY WEBPACK CODE #######");
   console.log(codeUglifyWebpack);
-  console.log("\n\n####### END UGLIFY WEBPACK CODE #######\n\n");
+  console.log("####### END UGLIFY WEBPACK CODE #######\n\n");
 }
 
 console.log("Are fat arrows stripped?");
