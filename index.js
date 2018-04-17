@@ -18,8 +18,8 @@ const { code: codeBabel } = require("@babel/core").transform(code, {
   ]
 });
 
-// Set to Uglify defaults
-const { code: codeUglify } = uglify.minify(codeBabel);
+// Set to Uglify code
+const { code: codeUglify } = uglify.minify(code);
 
 // Set to Uglify defaults
 const { code: codeUglifyDefaults } = uglify.minify(codeBabel);
