@@ -3,7 +3,7 @@
 Seems like uglify's rules are slightly confusing for the javascript API.
 
 * To reproduce...
-* Run `yarn start`
+* Run `yarn start` (--debug) for code outputs
 
 Via CLI it is fine
 
